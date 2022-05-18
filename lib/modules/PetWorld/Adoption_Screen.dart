@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +10,7 @@ import 'package:pet_world/shared/const.dart';
 import 'package:provider/provider.dart';
 
 import '../../Services/FirebaseRegister.dart';
+import 'PetProfile.dart';
 
 class AdoptionScreen extends StatelessWidget {
   const AdoptionScreen({Key? key}) : super(key: key);
@@ -24,7 +27,7 @@ class AdoptionScreen extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: Text(
             'Adopt \n a new pet',
-            style: TextStyle(fontSize: 30.0),
+            style: TextStyle(fontSize: 30.0,fontWeight: FontWeight.bold),
           ),
         ),
         Container(
@@ -35,35 +38,38 @@ class AdoptionScreen extends StatelessWidget {
               itemCount: context.read<UserProvider>().categories.length,
               itemBuilder: (context, index) {
                 return Expanded(
-                  child: Container(
-                    height: 100.0,
-                    child: Column(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          margin: const EdgeInsets.only(left: 20),
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                hexStringToColor("CB2B93"),
-                                hexStringToColor("9546C4"),
-                                hexStringToColor("5E61F4")
-                              ],
+                  child: InkWell(
+                    child: Container(
+                      height: 100.0,
+                      child: Column(
+                        children: [
+                          Container(
+
+                            padding: const EdgeInsets.all(10),
+                            margin: const EdgeInsets.only(left: 10 ,right: 10),
+                               decoration: BoxDecoration(
+                              color: Colors.white,
+                                 border: Border.all(color: Colors.transparent),
+                               boxShadow: shadowList,
+                                borderRadius: BorderRadius.circular(10),
+
 
                             ),
-                            boxShadow: shadowList,
-                            borderRadius: BorderRadius.circular(10),
+                            child: Image.asset(
+                              UserProvider().categories[index]['iconPath'],
+                              height: 50,
+                              width: 50,
+                                color: Colors.grey[700]
+                            ),
                           ),
-                          child: Image.asset(
-                            UserProvider().categories[index]['iconPath'],
-                            height: 50,
-                            width: 50,
-                            color: Colors.white,
-                          ),
-                        ),
-                        Text(UserProvider().categories[index]['name'])
-                      ],
+                          Text(UserProvider().categories[index]['name'])
+                        ],
+                      ),
                     ),
+                    onTap: (){
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => PetProfile()));
+                    },
                   ),
                 );
               },
@@ -79,6 +85,7 @@ class AdoptionScreen extends StatelessWidget {
                  Container(
 
                    height: 240,
+           padding: EdgeInsets.only(bottom: 10),
                    margin: EdgeInsets.symmetric(horizontal: 20),
                    child: Row(
                      children: [
@@ -111,6 +118,60 @@ class AdoptionScreen extends StatelessWidget {
                                  borderRadius: BorderRadius.only(
                                      topRight: Radius.circular(20),
                                      bottomRight: Radius.circular(20))),
+                             child: Container(
+                               padding: const EdgeInsets.all(20),
+                               child: Column(
+                                 children: [
+                                   Row(
+                                     children: [
+                                       Text(
+                                         'lolo',
+                                         style: TextStyle(
+                                           color: Colors.black54,
+                                           fontSize: 20.0,
+                                           fontWeight: FontWeight.bold
+                                         ),
+                                       ),
+                                       SizedBox(
+                                         width: 50.0,
+                                       ),
+
+                                       Expanded(
+                                         child: Icon(
+                                             Icons.female,
+                                           size: 50.0,
+                                           color: Colors.black12,
+                                         ),
+                                       )
+                                     ],
+                                   ),
+                                   SizedBox(
+                                     height: 10.0,
+                                   ),
+                                   Text(
+                                     'sherazi cat',
+               style: TextStyle(
+               color: Colors.black54,
+               fontSize: 20.0,
+               fontWeight: FontWeight.bold
+               ),
+                                   ),
+                                   SizedBox(
+                                   height: 10.0,
+                                   ),
+                                   Expanded(
+                                     child: Text(
+                                       '1.5 kg',
+                                       style: TextStyle(
+                                           color: Colors.black54,
+                                           fontSize: 10.0,
+                                           fontWeight: FontWeight.bold
+                                       ),
+                                     ),
+                                   )
+                                 ],
+                               ),
+                             ),
                            ))
                      ],
                    ),
