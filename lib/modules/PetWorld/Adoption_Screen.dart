@@ -38,7 +38,7 @@ class AdoptionScreen extends StatelessWidget {
               itemCount: context.read<UserProvider>().categories.length,
               itemBuilder: (context, index) {
                 return Expanded(
-                  child: InkWell(
+
                     child: Container(
                       height: 100.0,
                       child: Column(
@@ -66,11 +66,8 @@ class AdoptionScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    onTap: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => PetProfile()));
-                    },
-                  ),
+
+
                 );
               },
             ),
@@ -82,99 +79,105 @@ class AdoptionScreen extends StatelessWidget {
              itemCount: 4,
              itemBuilder: (context, index) {
                return
-                 Container(
+                 InkWell(
+                   child: Container(
 
-                   height: 240,
+                     height: 240,
            padding: EdgeInsets.only(bottom: 10),
-                   margin: EdgeInsets.symmetric(horizontal: 20),
-                   child: Row(
-                     children: [
-                       Expanded(
-                         child: Stack(
-                           children: [
-                             Container(
-                               decoration: BoxDecoration(
-                                 image: DecorationImage(
-                                   image: AssetImage(
-                                       'assets/imgs/real cat.jpg'),
-                                   fit: BoxFit.fill,
+                     margin: EdgeInsets.symmetric(horizontal: 20),
+                     child: Row(
+                       children: [
+                         Expanded(
+                           child: Stack(
+                             children: [
+                               Container(
+                                 decoration: BoxDecoration(
+                                   image: DecorationImage(
+                                     image: AssetImage(
+                                         'assets/imgs/real cat.jpg'),
+                                     fit: BoxFit.fill,
+                                   ),
+                                   color: Colors.grey,
+                                   borderRadius: BorderRadius.circular(20),
+                                   boxShadow: shadowList,
                                  ),
-                                 color: Colors.grey,
-                                 borderRadius: BorderRadius.circular(20),
-                                 boxShadow: shadowList,
+                                 margin: EdgeInsets.only(top: 50),
                                ),
-                               margin: EdgeInsets.only(top: 50),
-                             ),
 
-                           ],
+                             ],
+                           ),
                          ),
-                       ),
-                       Expanded(
-                           child: Container(
-                             margin: EdgeInsets.only(top: 60, bottom: 20),
-                             decoration: BoxDecoration(
-                                 color: Colors.white,
-                                 boxShadow: shadowList,
-                                 borderRadius: BorderRadius.only(
-                                     topRight: Radius.circular(20),
-                                     bottomRight: Radius.circular(20))),
+                         Expanded(
                              child: Container(
-                               padding: const EdgeInsets.all(20),
-                               child: Column(
-                                 children: [
-                                   Row(
-                                     children: [
-                                       Text(
-                                         'lolo',
-                                         style: TextStyle(
-                                           color: Colors.black54,
-                                           fontSize: 20.0,
-                                           fontWeight: FontWeight.bold
+                               margin: EdgeInsets.only(top: 60, bottom: 20),
+                               decoration: BoxDecoration(
+                                   color: Colors.white,
+                                   boxShadow: shadowList,
+                                   borderRadius: BorderRadius.only(
+                                       topRight: Radius.circular(20),
+                                       bottomRight: Radius.circular(20))),
+                               child: Container(
+                                 padding: const EdgeInsets.all(20),
+                                 child: Column(
+                                   children: [
+                                     Row(
+                                       children: [
+                                         Text(
+                                           'lolo',
+                                           style: TextStyle(
+                                             color: Colors.black54,
+                                             fontSize: 20.0,
+                                             fontWeight: FontWeight.bold
+                                           ),
                                          ),
-                                       ),
-                                       SizedBox(
-                                         width: 50.0,
-                                       ),
+                                         SizedBox(
+                                           width: 50.0,
+                                         ),
 
-                                       Expanded(
-                                         child: Icon(
-                                             Icons.female,
-                                           size: 50.0,
-                                           color: Colors.black12,
-                                         ),
-                                       )
-                                     ],
-                                   ),
-                                   SizedBox(
-                                     height: 10.0,
-                                   ),
-                                   Text(
-                                     'sherazi cat',
+                                         Expanded(
+                                           child: Icon(
+                                               Icons.female,
+                                             size: 50.0,
+                                             color: Colors.black12,
+                                           ),
+                                         )
+                                       ],
+                                     ),
+                                     SizedBox(
+                                       height: 10.0,
+                                     ),
+                                     Text(
+                                       'sherazi cat',
                style: TextStyle(
                color: Colors.black54,
                fontSize: 20.0,
                fontWeight: FontWeight.bold
                ),
-                                   ),
-                                   SizedBox(
-                                   height: 10.0,
-                                   ),
-                                   Expanded(
-                                     child: Text(
-                                       '1.5 kg',
-                                       style: TextStyle(
-                                           color: Colors.black54,
-                                           fontSize: 10.0,
-                                           fontWeight: FontWeight.bold
-                                       ),
                                      ),
-                                   )
-                                 ],
+                                     SizedBox(
+                                     height: 10.0,
+                                     ),
+                                     Expanded(
+                                       child: Text(
+                                         '1.5 kg',
+                                         style: TextStyle(
+                                             color: Colors.black54,
+                                             fontSize: 10.0,
+                                             fontWeight: FontWeight.bold
+                                         ),
+                                       ),
+                                     )
+                                   ],
+                                 ),
                                ),
-                             ),
-                           ))
-                     ],
+                             ))
+                       ],
+                     ),
                    ),
+                   onTap: (){
+                     Navigator.push(context,
+                         MaterialPageRoute(builder: (context) => PetProfile()));
+                   },
                  );
 
              }),
