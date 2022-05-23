@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:pet_world/models/pet_owner.dart';
+import 'package:pet_world/models/veterinarian.dart';
 import 'package:pet_world/modules/PetWorld/Adoption_Screen.dart';
 import 'package:pet_world/modules/PetWorld/GetToKnow_Screen.dart';
 import 'package:pet_world/modules/PetWorld/PetCare_Screen.dart';
@@ -7,6 +10,7 @@ import 'package:pet_world/modules/PetWorld/chat.dart';
 import 'package:pet_world/modules/PetWorld/userAppointmets_Screen.dart';
 
 class UserProvider extends ChangeNotifier{
+  late FirebaseFirestore _firestore = FirebaseFirestore.instance;
   late bool _isVet;
   String _loc="";
   int _currentIndex=0;
@@ -58,5 +62,27 @@ class UserProvider extends ChangeNotifier{
     _currentIndex=index;
     notifyListeners();
   }
+String ? _image='';
+  get image=>_image;
+
+  Future GetUserImage(UserID) async {
+    try {
+      var po = await _firestore.collection('PetOwner').doc(UserID).get();
+      var ve = await _firestore.collection('Veterinarian').doc(UserID).get();
+      if (po.exists) {
+        pet_owner pp = pet_owner.fromJson(po.data()!);
+       _image=pp.image;
+      }
+      else if (ve.exists) {
+        veterinarian vv = veterinarian.fromJeson(ve.data()!);
+       _image=vv.image;
+      }
+    }
+    catch (Error) {
+      print(Error.toString());
+    }
+    notifyListeners();
+  }
+
 }
 
