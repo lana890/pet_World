@@ -6,11 +6,11 @@ class pet{
   late String? name;
   late String? type;
   late String? breed;
-  late String? Age;
+  late double? Age;
   late String? gender;
-  late String? weight;
+  late double? weight;
   late String? petImage;
-  late medical_record? MadicalRecord;
+ // late medical_record? MadicalRecord;
   late String? bio;
 
   pet({
@@ -22,7 +22,7 @@ class pet{
      this.gender,
      this.type,
      this.breed,
-     this.MadicalRecord,
+     //this.MadicalRecord,
     this.bio
 
  });
@@ -35,10 +35,10 @@ class pet{
     type=json['type']?? '';
     breed=json['breed']?? '';
     bio=json['bio']?? '';
-    Age=json['Age']?? '';
+    Age=json['Age'].toDouble()?? 0;
     gender=json['gender']?? '';
-    weight=json['weight']?? '';
-    MadicalRecord=json['MadicalRecord'] ?? medical_record(vaccinations: [], diseases: [], medicines: []);
+    weight=json['weight'].toDouble()?? 0;
+  //  MadicalRecord=json['MadicalRecord'] ?? medical_record(vaccinations: [], diseases: [], medicines: []);
 
 
   }
@@ -47,15 +47,17 @@ class pet{
   {
     return {
       'name':name ?? '',
+      'ID':ID ?? '',
        'OwnerID':OwnerID ?? '',
       'type':type ??'',
       'breed':breed ?? '',
        'description':bio ?? '',
-      'Age':Age ?? '',
+      'Age':Age ?? 0,
       'gender':gender ?? '',
-      'weight':weight ?? '',
-      'MadicalRecord':MadicalRecord?.toMap(),
-      'petImage':petImage ?? ''
+      'weight':weight ?? 0,
+     // 'MadicalRecord':MadicalRecord?.toMap(),
+      'petImage':petImage ?? '',
+      'bio':bio ??''
 
     };
   }

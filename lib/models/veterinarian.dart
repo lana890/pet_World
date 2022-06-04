@@ -1,3 +1,6 @@
+
+import 'package:pet_world/models/WorkDay.dart';
+
 class veterinarian{
   late String? name;
   late String? email;
@@ -6,10 +9,16 @@ class veterinarian{
   late String? image;
   late String? latidude;
   late String? longitude;
-  late List? feedbacks;
 late String? experience;
     late String? clinicName;
-  late List? pets;
+    late String? city;
+    late String? StartDay;
+  late String? EndDay;
+  late String? StartTime;
+  late String? EndTime;
+
+
+
 
   veterinarian({
     this.name,
@@ -21,8 +30,13 @@ late String? experience;
     this.longitude,
     this.clinicName,
     this.experience,
-    this.feedbacks,
-    this.pets,
+    this.city,
+    this.StartDay,
+    this.EndDay,
+    this.StartTime,
+    this.EndTime,
+
+
 });
   veterinarian.fromJeson( Map<String,dynamic>json){
     name = json['name'];
@@ -34,8 +48,12 @@ late String? experience;
     longitude = json['longitud'];
     clinicName=json['clinicName'];
    experience=json['experience'];
-    feedbacks=json['feedbacks'];
-    pets=json['pets'];
+   city=json['city'];
+   StartDay=json['StartDay'];
+   EndDay=json['EndDay'];
+   StartTime=json['StartTime'];
+   EndTime=json['EndTime'];
+
 
   }
   Map<String, dynamic> toMap() {
@@ -49,8 +67,11 @@ late String? experience;
       'longitud': longitude,
     'clinicName':clinicName,
     'experience':experience,
-    'feedbacks':feedbacks,
-      'pets':pets
+      'StartDay':StartDay,
+      'EndDay':EndDay,
+      'StartTime':StartTime,
+      'EndTime':EndTime
+
 
     };
   }

@@ -7,7 +7,7 @@ class pet_owner {
   late String ?phone;
   late String? uid;
   late String? image;
-  late List<pet>? mypets;
+ // late List<pet>? mypets;
   late String? latidude;
   late String? longitude;
 
@@ -18,7 +18,7 @@ class pet_owner {
     this.email,
     this.phone,
     this.uid,
-    this.mypets,
+   // this.mypets,
     this.image,
     this.latidude,
     this.longitude,
@@ -30,7 +30,7 @@ class pet_owner {
     email = json['email'];
     phone = json['phone'];
     uid = json['uid'];
-    mypets=json['mypets'];
+    //mypets=json['mypets'];
     image = json['image'];
     latidude = json['latidude'];
     longitude = json['longitud'];
@@ -43,7 +43,7 @@ class pet_owner {
       'email': email,
       'phone': phone,
       'uid': uid,
-      'mypets': mypets,
+     // 'mypets': mypets,
       'image': image,
       'latidude': latidude,
       'longitud': longitude,

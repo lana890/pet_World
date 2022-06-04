@@ -1,7 +1,12 @@
 import 'package:flutter/cupertino.dart';
 
-class chat extends StatelessWidget {
-  const chat({Key? key}) : super(key: key);
+class ChooseTime extends StatelessWidget {
+
+  var doc;
+
+  ChooseTime({
+    this.doc
+});
 
   @override
   Widget build(BuildContext context) {

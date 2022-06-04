@@ -1,4 +1,6 @@
 
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,11 +19,9 @@ class UserAppLayout extends StatelessWidget {
       builder: (context,model,child)=>Scaffold(
         appBar:AppBar(
           backgroundColor: Colors.transparent,
-          elevation: 0.0,
-          title: new Text(
-            "PET WORLD",
-            style: TextStyle( fontSize: 100.0),
-          ),
+          elevation: 0,
+
+
           actions: [
 
             IconButton(
@@ -66,8 +66,8 @@ class UserAppLayout extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               BottomNavyBarItem(
-                icon: Icon(Icons.chat),
-                title: Text('chat'),
+                icon: Icon(Icons.add),
+                title: Text('Requests'),
                 activeColor: Colors.grey,
                 textAlign: TextAlign.center,
               ),

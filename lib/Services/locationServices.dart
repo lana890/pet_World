@@ -28,11 +28,13 @@ if(_locationData!=null){
 
   }
 
-  goToMap(double lati,double longi)async{
-    String mapLocationUrl="http://www.google/maps/search/?api=/&query=$lati,$lati";
-    final String encodeUrl=Uri.decodeFull(mapLocationUrl);
-    if(await canLaunch(encodeUrl))
-      await launch(encodeUrl);
+  goToMap( {
+  lati
+  , longi})async{
+    String mapLocationUrl="https://www.google.com/maps/search/?api=1&query=$longi,$lati";
+  //  final String encodeUrl=Uri.decodeFull(mapLocationUrl);
+    if(await canLaunch(mapLocationUrl))
+      await launch(mapLocationUrl);
     else
       print('cant launch');
   }

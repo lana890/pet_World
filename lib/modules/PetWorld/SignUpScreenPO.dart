@@ -1,4 +1,6 @@
 
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
@@ -6,7 +8,6 @@ import 'package:location/location.dart';
 import 'package:pet_world/Providers/UserProvider.dart';
 import 'package:pet_world/Services/FirebaseRegister.dart';
 import 'package:pet_world/colors/colors.dart';
-import 'package:pet_world/modules/PetWorld/HomeScreenuser.dart';
 import 'package:pet_world/modules/PetWorld/signin_Screen.dart';
 import 'package:pet_world/shared/const.dart';
 import 'package:provider/provider.dart';
@@ -105,9 +106,34 @@ class _SignUpScreenPOState extends State<SignUpScreenPO> {
                       const SizedBox(
                         height: 20,
                       ),
-                      reusableTextField(
-                          "Enter PhoneNumber", Icons.phone_android, false,
-                          _PhoneNumberTextController),
+                      Row(
+                          children: [
+                            Flexible(
+                                fit: FlexFit.loose,
+                                child:
+                               Text(
+                                "+962",
+                                 style: TextStyle(
+                                   color: Colors.white,
+                                   fontWeight: FontWeight.bold
+                                 ),
+                              ),
+                            ),
+                         SizedBox(
+                           width: 4,
+                         )
+,
+
+
+                            Container(
+                              width: 280,
+                              child: reusableTextField(
+                                "Enter PhoneNumber", Icons.phone_android, false,
+                                _PhoneNumberTextController),
+                            ),
+
+                      ]),
+
 
                       const SizedBox(
                         height: 20,

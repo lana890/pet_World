@@ -18,7 +18,7 @@ fun(context) async{
   @override
   Widget build(BuildContext context) {
   fun(context);
-  String? uid=context.watch<UserProvider>().getUser?.uid;
+  String? uid=context.watch<UserProvider>().getUser()?.uid;
     return Scaffold(
       body: Column(
         children: [
@@ -37,6 +37,6 @@ child: Text('SignOut'),
   }
   onTap(uid){
   medical_record m=medical_record(vaccinations: [], diseases: [], medicines: []);
-  FirebaseRegister().addPetToPO(userID: uid, name: 'lkl', weight: '98', Age: '89', gender: 'female', type: 'gh', breed: 'jk', MadicalRecord:m);
+  //FirebaseRegister().addPetToPO(userID: uid, name: 'lkl', weight: '98', Age: '89', gender: 'female', type: 'gh', breed: 'jk');
   }
 }
