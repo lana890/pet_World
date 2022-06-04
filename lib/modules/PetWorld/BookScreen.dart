@@ -4,22 +4,30 @@ import 'package:flutter/material.dart';
 import 'package:pet_world/Services/DataBase.dart';
 import 'package:pet_world/Services/FirebaseRegister.dart';
 import 'package:pet_world/modules/PetWorld/ChooseTime.dart';
+import 'package:pet_world/modules/PetWorld/MyPetsList.dart';
+import 'package:pet_world/modules/PetWorld/SelectPetForAppointment.dart';
 
 class BookScreen extends StatelessWidget {
+  var uuid;
   fun()async{
     uuid=FirebaseRegister().Userinfo().uid;
 
 
 
   }
-  var uuid;
+  var vetID;
+BookScreen({
+    this.vetID
+});
   @override
-  Widget build(BuildContext context) {return Scaffold(
+  Widget build(BuildContext context) {
+    fun();
+    return Scaffold(
       appBar:AppBar(
         iconTheme: IconThemeData(
           color: Colors.black, //change your color here
         ),
-        title:Text('My Pets for adoption',style: TextStyle(color: Colors.black),),
+        title:Text('Choose pet To confirm Booking ',style: TextStyle(color: Colors.black),),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
 
@@ -36,8 +44,9 @@ class BookScreen extends StatelessWidget {
                       padding: const EdgeInsetsDirectional.only(
                         start: 20.0,)
                   ),
-                  itemBuilder:( BuildContext context, int index)=>ChooseTime(doc: snapshot.data.docs[index]),
-                  itemCount: snapshot.data.docs.length);
+                  itemBuilder:( BuildContext context, int index)=>SelectPetForAppointment(doc: snapshot.data.docs[index],vetID:vetID),
+                  itemCount: snapshot.data.docs.length
+              );
             }  else if (snapshot.hasError)
               return Text('some Error');
             else

@@ -11,6 +11,7 @@ import 'package:pet_world/shared/const.dart';
 import 'package:provider/provider.dart';
 
 import '../models/RequestModel.dart';
+import '../models/appointment.dart';
 import 'FirebaseRegister.dart';
 
 class DataBase {
@@ -201,6 +202,38 @@ class DataBase {
       _firestore.collection("Veterinarian")
           .snapshots();
 
+
+
+
+  Future Booking({
+  required petID,
+    required VetID,
+    required petownerID,
+    required day,
+    required time
+}) async {
+    appointment ap=appointment( PetID: petID,Day: day,DoctorID: VetID,PetOwnerID:petownerID,Time: time );
+    await _firestore.collection("Appointments").add(ap.toMap()).then((value) async =>
+    await _firestore.collection('Appointments').doc(value.id)
+
+        .update({'appoID': value.id})
+    );
+}
+
+
+  Stream<QuerySnapshot<Map<String, dynamic>>>? get readAppointments =>
+      _firestore.collection("Appointments").where("DoctorID",isEqualTo: uuid)
+          .snapshots();
+
+
+  Stream<QuerySnapshot<Map<String, dynamic>>>? get readAppointmentsUSER =>
+      _firestore.collection("Appointments").where("PetOwnerID",isEqualTo: uuid)
+          .snapshots();
+
+ DeleteAppointment(appuid) async {
+  await _firestore.collection("Appointments").doc(appuid).delete();
+
+}
 }
 
   

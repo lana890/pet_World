@@ -1,33 +1,38 @@
 class appointment{
-String? Status;
-String? DayTime;
+
+String? Day;
+String? Time;
 String? PetID;
 String? PetOwnerID;
 String? DoctorID;
+String? appoID;
 
 appointment({
   this.PetID,
   this.DoctorID,
   this.PetOwnerID,
-  this.DayTime,
-  this.Status
+  this.Day,
+  this.Time,
+
 
 });
 
 appointment.fromJson(Map<String, dynamic>json){
-  Status=json['Status'];
-  DayTime=json['DayTime'];
+
+  Day=json['Day'];
+  Time=json['Time'];
   PetOwnerID=json['PetOwnerID'];
-  Status=json['Status'];
-  PetID=json['PetID'];
+   PetID=json['PetID'];
+   DoctorID=json['DoctorID'];
+   appoID=json['appoID'];
 }
 Map<String, dynamic> toMap() {
   return {
     'PetID': PetID ?? '',
     'DoctorID': DoctorID ?? '',
     'PetOwnerID': PetOwnerID ?? '',
-    'DayTime': DayTime ?? '',
-    'Status': Status ?? '',
+    'Day': Day ?? '',
+    'Time':Time ??''
 
   };
 }

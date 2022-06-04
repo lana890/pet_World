@@ -355,7 +355,7 @@ VetScreen({
                             Center(
 
                                 child: UIButton(context, "Book", ()=>Navigator.push(context,
-                MaterialPageRoute(builder: (context) =>BookScreen())
+                MaterialPageRoute(builder: (context) =>BookScreen(vetID: doc.data()['uid']))
 
                                   ),
                                 )

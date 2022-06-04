@@ -10,6 +10,8 @@ import 'package:pet_world/models/veterinarian.dart';
 import 'package:pet_world/modules/PetWorld/Adoption_Screen.dart';
 import 'package:pet_world/modules/PetWorld/GetToKnow_Screen.dart';
 import 'package:pet_world/modules/PetWorld/PetCare_Screen.dart';
+import 'package:pet_world/modules/PetWorld/USERAppointments.dart';
+import 'package:pet_world/modules/PetWorld/VetAppointment.dart';
 import 'package:pet_world/modules/PetWorld/userAppointmets_Screen.dart';
 
 import 'package:pet_world/modules/PetWorld/Requests.dart';
@@ -28,6 +30,10 @@ class UserProvider extends ChangeNotifier{
   String _loc="";
   int _currentIndex=0;
   List<Widget> _screens=[AdoptionScreen(),GetToKnow(),Requests(),UserAppointment(),PetCare()];
+
+  List<Widget> _vetscreens=[AdoptionScreen(),Requests(),VetAppointment()];
+
+
   List<String> items=['Cat','Dog','Hamster','Bunny','Others'];
   String? _SelectedItem="Cat";
   List<Map> categories = [
@@ -50,9 +56,22 @@ class UserProvider extends ChangeNotifier{
      notifyListeners();
    }
 
-
+  set currentvetCatagoryIndex(int index){
+    _currentVetIndex=index;
+    notifyListeners();
+  }
    get currentIndex=>_currentIndex;
    get currentScreen=>_screens[_currentIndex];
+
+
+  int _currentVetIndex=0;
+  get currentVetIndex=>_currentVetIndex;
+  get currentVetScreen=>_vetscreens[_currentVetIndex];
+
+  set setCurrentvetIndex(int index){
+    _currentVetIndex=index;
+    notifyListeners();
+  }
 
   void setIsVet(bool value){
     _isVet=value;
@@ -82,6 +101,8 @@ class UserProvider extends ChangeNotifier{
     _currentIndex=index;
     notifyListeners();
   }
+
+
 String ? _image='';
   String? image(){return _image;}
 

@@ -4,8 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_world/models/appointment.dart';
 import 'package:pet_world/models/pet.dart';
+import 'package:pet_world/models/petType.dart';
 import 'package:pet_world/models/pet_owner.dart';
 import 'package:pet_world/models/veterinarian.dart';
+import 'package:pet_world/modules/PetWorld/petInfo.dart';
 
 //logo
 Image logoWidget(String imageName) {
@@ -373,7 +375,8 @@ Widget buildMyPets1(pet p,context )=>InkWell(
                 ])
         )));
 
-Widget buildAppointmentForVet(appointment ap,pet p, pet_owner owner,context)=>Container(
+Widget buildAppointmentForVet(appointment ap,pet p, pet_owner owner,context)=>
+    Container(
     child:Padding(
         padding: const EdgeInsets.all(15.0),
         child:  Column(
@@ -433,8 +436,6 @@ Widget buildAppointmentForVet(appointment ap,pet p, pet_owner owner,context)=>Co
                               SizedBox(
                                 height: 5.0,
                               ),
-                              TextButton(onPressed: (){
-                               }, child: Text('See Medical Record',style: TextStyle(color: Colors.grey[700],fontSize: 18,),),)
                             ])
                     )
                   ]),
@@ -451,6 +452,47 @@ Widget buildAppointmentForVet(appointment ap,pet p, pet_owner owner,context)=>Co
             ]
         )
     ));
+Widget buildPetBreed(petType p,context) {
+  return InkWell(
+    onTap:(){
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) =>PetInfoScreen(p:p ,)));
+    },
+    child: Flexible(
+        child:Padding(
+          padding: const EdgeInsets.all(10),
+          child:Stack(
+              alignment:AlignmentDirectional.bottomStart,
+              children:[ Container(
+                decoration:   BoxDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage(p.image),
+                      fit: BoxFit.fill,
+                    ),
+                    border: Border.all(
+                      color: Colors.white60,    ),
+                    borderRadius: BorderRadius.all(Radius.circular(20))
+                ),
+                height: 160,
+                width: 160,
+              ),
+                Container(
+                  width: 160.0,
+                  decoration:   BoxDecoration(
+                      color: Colors.purple,
+                      border: Border.all(),
+                      borderRadius: BorderRadius.all(Radius.circular(20))
+                  ),
+
+                  child: Text(p.bread,style: TextStyle(color: Colors.white,fontSize: 17.0),),
+                ),
+              ]),
+        )
+    ),
+  );
+}
+
+
 Widget buildAppointmentForPetOwner(appointment ap,pet p, veterinarian vet)=>Container(
     child:Padding(
         padding: const EdgeInsets.all(15.0),

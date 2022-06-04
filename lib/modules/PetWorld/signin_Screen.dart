@@ -11,6 +11,7 @@ import 'package:pet_world/shared/const.dart';
 import 'package:pet_world/modules/PetWorld/SignUpScreenPO.dart';
 import 'package:provider/provider.dart';
 
+import '../../layout/VetLayout.dart';
 import 'HomeScreenvet.dart';
 
 class SigninScreen extends StatefulWidget {
@@ -36,7 +37,7 @@ class _SigninScreenState extends State<SigninScreen> {
                   MaterialPageRoute(builder: (context) => UserAppLayout()));}
             else if(value=='Veterinarian'){
               Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => HomeScreenvet()));}
+                  MaterialPageRoute(builder: (context) => VetLayout()));}
             else Fluttertoast.showToast(
                   msg: "${value}",
                   toastLength: Toast.LENGTH_SHORT,
